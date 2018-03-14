@@ -17,6 +17,7 @@ bot_prefix= "}"
 client = commands.Bot(command_prefix=bot_prefix)
 server = discord.Server(id='414089074870321153')
 footer_text = "Tʜᴇ Rᴇᴀʟᴍ Oғ Dᴀʀᴋɴᴇss"
+BOT_TOKEN = 'NDE0Mzg0MzExMTA2NTM1NDI1.DWmlAQ.ARXtf45gpfFhWiWmDtg7-SYz7mU'
 
 attacks = ["Punches the opponent :punch: ", "Kicks the opponent :boot: ", "Throws the opponent :raised_hands: ", "Stabs the opponent :dagger: ", "Shoots the opponent :gun: ",
            "Sets the opponent on fire :fire: ", "Poisons the opponent :syringe: ", "Throws a bomb at the opponent :bomb: ", "Uses a shield to deal damage with the same attack as the opponent's :shield: ", "Chokes the opponent using chains :chains: ",
@@ -1843,4 +1844,4 @@ async def close(ctx):
         print("============================================================")
 
 # TURNS ON THE BOT
-client.run('NDE0Mzg0MzExMTA2NTM1NDI1.DWmlAQ.ARXtf45gpfFhWiWmDtg7-SYz7mU')
+client.run(BOT_TOKEN)
