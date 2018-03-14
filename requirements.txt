@@ -3,7 +3,6 @@ aiohttp
 websockets
 chardet
 asyncio
-random==9.6
 pickle==12.1
 os
 requests==2.18.4
