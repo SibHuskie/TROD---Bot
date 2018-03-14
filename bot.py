@@ -1843,4 +1843,4 @@ async def close(ctx):
         print("============================================================")
 
 # TURNS ON THE BOT
-client.login(process.env.BOT_TOKEN)
+client.run('NDE0Mzg0MzExMTA2NTM1NDI1.DWmlAQ.ARXtf45gpfFhWiWmDtg7-SYz7mU')
