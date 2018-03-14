@@ -4,6 +4,5 @@ websockets
 chardet
 asyncio
 requests==2.18.4
-json==18.2
 time==15.3
 gtts==1.2.2
