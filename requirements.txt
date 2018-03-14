@@ -3,10 +3,10 @@ aiohttp
 websockets
 chardet
 asyncio
-random
-pickle
+random==9.6
+pickle==12.1
 os
-requests
-json
-time
-gtts
+requests==2.18.4
+json==18.2
+time==15.3
+gtts==1.2.2
