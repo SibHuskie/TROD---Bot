@@ -1,1 +1,1 @@
-worker: trodbot.py
+worker: python bot.py
