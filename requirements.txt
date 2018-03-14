@@ -1,0 +1,12 @@
+discord.py==0.16.12
+aiohttp
+websockets
+chardet
+asyncio
+random
+pickle
+os
+requests
+json
+time
+gtts
