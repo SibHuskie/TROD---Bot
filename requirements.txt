@@ -3,7 +3,6 @@ aiohttp
 websockets
 chardet
 asyncio
-os
 requests==2.18.4
 json==18.2
 time==15.3
