@@ -538,7 +538,6 @@ async def help(ctx):
     embed7.add_field(name="}idban <user id>", value="`Bans a user with the matching ID as the one specified! This can ban users outside of the server!`", inline=True)
 
     embed8.add_field(name="}pan <user> [text]", value="`Uses the mighty pan to destroy the mentioned user!`", inline=True)
-    embed8.add_field(name="}close", value="`Shuts down the bot and closes all connections to discord!`", inline=True)
 
     msg = discord.Embed(colour=0x210150, description= "")
     msg.title = ""
@@ -562,16 +561,13 @@ async def help(ctx):
 @client.command(pass_context=True)
 async def ping(ctx):
     channel = ctx.message.channel
-    t01 = time.perf_counter()
-    await client.send_typing(channel)
-    t02 = time.perf_counter()
-    author = ctx.message.author
-    msg = discord.Embed(colour=0x210150, description= "")
-    msg.title = ""
     t1 = time.perf_counter()
     await client.send_typing(channel)
     t2 = time.perf_counter()
-    msg.add_field(name=":satellite: ", value="`My ping: {}ms`\n`Your ping: {}ms`".format(round((t2-t1)*1000), round((t02-t01)*1000)))
+    author = ctx.message.author
+    msg = discord.Embed(colour=0x210150, description= "")
+    msg.title = ""
+    msg.add_field(name=":satellite: ", value="`Yes, I am here. No need to ping me.`\n`Ping: {}ms`".format(round((t2-t1)*1000)))
     msg.set_footer(text=footer_text)
     await client.say(embed=msg)
     print("============================================================")
