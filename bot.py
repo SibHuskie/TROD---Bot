@@ -1546,25 +1546,19 @@ async def ban(ctx, userName: discord.Member = None, *, args = None):
     msg = discord.Embed(colour=0x210150, description= "")
     msg.title = ""
     msg.set_footer(text=footer_text)
-    msg2 = discord.Embed(colour=0x210150, description= "")
-    msg2.title = ""
-    msg2.set_footer(text=footer_text)
     if mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
         if userName == None:
             msg.add_field(name=":octagonal_sign: ", value="`}ban <user> [reason]`")
         elif helper_role in userName.roles or mod_role in userName.roles or admin_role in userName.roles or manager_role in userName.roles or owner_role in userName.roles:
             msg.add_field(name=":octagonal_sign: ", value="`You can't ban other staff!`")
         elif args == None:
-            msg2.add_field(name=":skull_crossbones: ", value="`You have been banned from The Realm Of Darkness by {}!`\n`Reason: ?`".format(author.display_name))
             msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {}!`\n`Reason: ?`".format(author.display_name, userName.display_name))
-            await client.send_message(userName, embed=msg2)
+            await client.ban(userName)
         else:
-            msg2.add_field(name=":skull_crossbones: ", value="`You have been banned from The Realm Of Darkness by {}!`\n`Reason: {}`".format(author.display_name, args))
             msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {}!`\n`Reason: {}`".format(author.display_name, userName.display_name, args))
-            await client.send_message(userName, embed=msg2)
+            await client.ban(userName)
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Moderators, Administrators, Managers and Owners!`")
-    await client.ban(userName)
     await client.say(embed=msg)
     print("============================================================")
     print("}ban <user> [reason]")
@@ -1583,25 +1577,19 @@ async def kick(ctx, userName: discord.Member = None, *, args = None):
     msg = discord.Embed(colour=0x210150, description= "")
     msg.title = ""
     msg.set_footer(text=footer_text)
-    msg2 = discord.Embed(colour=0x210150, description= "")
-    msg2.title = ""
-    msg2.set_footer(text=footer_text)
     if mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
         if userName == None:
             msg.add_field(name=":octagonal_sign: ", value="`}kick <user> [reason]`")
         elif helper_role in userName.roles or mod_role in userName.roles or admin_role in userName.roles or manager_role in userName.roles or owner_role in userName.roles:
             msg.add_field(name=":octagonal_sign: ", value="`You can't kick other staff!`")
-        elif args == None:
-            msg2.add_field(name=":skull_crossbones: ", value="`You have been kicked from The Realm Of Darkness by {}!`\n`Reason: ?`".format(author.display_name))
+        elif args == None:)
             msg.add_field(name=":boot: Kicker", value="`{} kicked {}!`\n`Reason: ?`".format(author.display_name, userName.display_name))
-            await client.send_message(userName, embed=msg2)
+            await client.kick(userName)
         else:
-            msg2.add_field(name=":skull_crossbones: ", value="`You have been kicked from The Realm Of Darkness by {}!`\n`Reason: {}`".format(author.display_name, args))
             msg.add_field(name=":boot: Kicker", value="`{} kicked {}!`\n`Reason: {}`".format(author.display_name, userName.display_name, args))
-            await client.send_message(userName, embed=msg2)
+            await client.kick(userName)
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Moderators, Administrators, Managers and Owners!`")
-    await client.kick(userName)
     await client.say(embed=msg)
     print("============================================================")
     print("}kick <user> [reason]")
