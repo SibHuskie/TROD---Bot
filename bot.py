@@ -1582,7 +1582,7 @@ async def kick(ctx, userName: discord.Member = None, *, args = None):
             msg.add_field(name=":octagonal_sign: ", value="`}kick <user> [reason]`")
         elif helper_role in userName.roles or mod_role in userName.roles or admin_role in userName.roles or manager_role in userName.roles or owner_role in userName.roles:
             msg.add_field(name=":octagonal_sign: ", value="`You can't kick other staff!`")
-        elif args == None:)
+        elif args == None:
             msg.add_field(name=":boot: Kicker", value="`{} kicked {}!`\n`Reason: ?`".format(author.display_name, userName.display_name))
             await client.kick(userName)
         else:
