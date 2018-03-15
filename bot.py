@@ -1556,16 +1556,15 @@ async def ban(ctx, userName: discord.Member = None, *, args = None):
             msg.add_field(name=":octagonal_sign: ", value="`You can't ban other staff!`")
         elif args == None:
             msg2.add_field(name=":skull_crossbones: ", value="`You have been banned from The Realm Of Darkness by {}!`\n`Reason: ?`".format(author.display_name))
-            await client.send_message(userName, embed=msg2)
             msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {}!`\n`Reason: ?`".format(author.display_name, userName.display_name))
-            await client.ban(userName)
+            await client.send_message(userName, embed=msg2)
         else:
             msg2.add_field(name=":skull_crossbones: ", value="`You have been banned from The Realm Of Darkness by {}!`\n`Reason: {}`".format(author.display_name, args))
-            await client.send_message(userName, embed=msg2)
             msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {}!`\n`Reason: {}`".format(author.display_name, userName.display_name, args))
-            await client.ban(userName)
+            await client.send_message(userName, embed=msg2)
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Moderators, Administrators, Managers and Owners!`")
+    await client.ban(userName)
     await client.say(embed=msg)
     print("============================================================")
     print("}ban <user> [reason]")
@@ -1594,16 +1593,15 @@ async def kick(ctx, userName: discord.Member = None, *, args = None):
             msg.add_field(name=":octagonal_sign: ", value="`You can't kick other staff!`")
         elif args == None:
             msg2.add_field(name=":skull_crossbones: ", value="`You have been kicked from The Realm Of Darkness by {}!`\n`Reason: ?`".format(author.display_name))
-            await client.send_message(userName, embed=msg2)
             msg.add_field(name=":boot: Kicker", value="`{} kicked {}!`\n`Reason: ?`".format(author.display_name, userName.display_name))
-            await client.kick(userName)
+            await client.send_message(userName, embed=msg2)
         else:
             msg2.add_field(name=":skull_crossbones: ", value="`You have been kicked from The Realm Of Darkness by {}!`\n`Reason: {}`".format(author.display_name, args))
-            await client.send_message(userName, embed=msg2)
             msg.add_field(name=":boot: Kicker", value="`{} kicked {}!`\n`Reason: {}`".format(author.display_name, userName.display_name, args))
-            await client.kick(userName)
+            await client.send_message(userName, embed=msg2)
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Moderators, Administrators, Managers and Owners!`")
+    await client.kick(userName)
     await client.say(embed=msg)
     print("============================================================")
     print("}kick <user> [reason]")
