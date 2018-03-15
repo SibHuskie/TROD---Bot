@@ -525,6 +525,7 @@ async def help(ctx):
     embed4.add_field(name="}pardon <user>", value="`Revomes the punishment from the mentioned user!`", inline=True)
     embed4.add_field(name="}purge <number>", value="`Deletes the specified amount of messages in a channel!`", inline=True)
     embed4.add_field(name="}nick <user> [nickname]", value="`Changes the mentioned user's nickname to whatever you specify!`", inline=True)
+    embed4.add_field(name="}warn <user> <reason>", value="`Warns the mentioned user!`", inline=True)
 
     embed5.add_field(name="}ban <user> [reason]", value="`Bans the mentioned user!`", inline=True)
     embed5.add_field(name="}unban <user id>", value="`Unbans the user with the specified ID!`", inline=True)
@@ -1368,6 +1369,31 @@ async def earrape(ctx):
 #
 
 '''HELPER COMMANDS'''
+# }warn <user> <reason>
+@client.command(pass_context=True)
+async def warn(ctx, userName: discord.Member = None, *, args = None):
+    helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
+    mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
+    admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
+    manager_role = discord.utils.get(ctx.message.server.roles, name='Nightmares (Managers)')
+    owner_role = discord.utils.get(ctx.message.server.roles, name='Dark Lords (Owners)')
+    author = ctx.message.author
+    msg = discord.Embed(colour=0x210150, description= "")
+    msg.title = ""
+    msg.set_footer(text=footer_text)
+    if helper_role in author.roles or mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
+        if userName == None or args == None:
+            msg.add_field(name=":octagonal_sign: ", value="`}warn <user> <reason>`")
+        else:
+            msg.add_field(name=":pencil: ", value="`{} warned {}!`\n`Reason: {}`".format(author.display_name, userName.display_name, args))
+    else:
+        msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by staff!`")
+    await client.say(embed=msg)
+    print("============================================================")
+    print("}warn <user> <reason>")
+    print("{} ### {}".format(author, author.id))
+    print("============================================================")
+           
 # }punish <user> [reason]
 @client.command(pass_context=True)
 async def punish(ctx, userName: discord.Member = None, *, args = None):
