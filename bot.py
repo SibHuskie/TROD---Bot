@@ -1663,6 +1663,32 @@ async def unban(ctx, userID = None):
     print("============================================================")
 
 '''ADMIN COMMANDS'''
+# }masspardon
+@client.command(pass_context=True)
+async def masspardon(ctx):
+    punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
+    admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
+    manager_role = discord.utils.get(ctx.message.server.roles, name='Nightmares (Managers)')
+    owner_role = discord.utils.get(ctx.message.server.roles, name='Dark Lords (Owners)')
+    author = ctx.message.author
+    msg = discord.Embed(colour=0x210150, description= "")
+    msg.title = ""
+    msg.set_footer(text=footer_text)
+    if admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
+        for member in ctx.message.server.members:
+            if punished_role in member.roles:
+                await client.remove_roles(member, punished_role)
+            else:
+                print(".")
+        msg.add_field(name=":cloud_tornado: ", value="`I have pardoned all punished users on the server!`")
+    else:
+        msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Administrators, Managers and Owners!`")
+    await client.say(embed=msg)
+    print("============================================================")
+    print("}masspardon")
+    print("{} ### {}".format(author, author.id))
+    print("============================================================")
+           
 # }embed <title> <description> <field name> <field value> <footer>
 @client.command(pass_context=True)
 async def embed(ctx, title = None, desc = None, name = None, value = None, footer = None):
