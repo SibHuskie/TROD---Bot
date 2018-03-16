@@ -534,6 +534,7 @@ async def help(ctx):
     embed6.add_field(name="}embed <title> <description> <field name> <field value> <footer>", value="`Forces the bot to create custom embeds!`", inline=True)
     embed6.add_field(name="}takerole <user> <role name>", value="`Removes a specified role from the mentioned user!`", inline=True)
     embed6.add_field(name="}giverole <user> <role name>", value="`Gives a specified role to the mentioned user!`", inline=True)
+    embed6.add_field(name="}masspardon", value="`Removes punishments from all punished members on the server!`", inline=True)
 
     embed7.add_field(name="}rawsay <text>", value="`Forces the bot to say something, this supports formats!`", inline=True)
     embed7.add_field(name="}idban <user id>", value="`Bans a user with the matching ID as the one specified! This can ban users outside of the server!`", inline=True)
