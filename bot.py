@@ -353,6 +353,8 @@ games = ["with the other me...", "with monsters in the dark...", "with monsters 
          "with shadows...", "with your masks...", "with my mask...",
          "}help"]
 
+hackergame_types = ["ddos", "virus", "claim", "nuke", "raid"]
+
 # EVENT - TELLS YOU WHEN THE BOT TURNS ON
 @client.event
 async def on_ready():
@@ -511,6 +513,7 @@ async def help(ctx):
     embed1.add_field(name="}leave", value="`Leaves!`", inline=True)
     embed1.add_field(name="}rate <text>", value="`Rates the specified thing!`", inline=True)
     embed1.add_field(name="}dicklength", value="`Tells how big your dick is, even if you don't have one!`", inline=True)
+    embed1.add_field(name="}hackergame <number> [type]", value="`Tries to hack into the specified amount of companies. You can also add a type of hack to destroy the companies!`", inline=True)
 
     embed2.add_field(name="}say <text>", value="`Forces the bot to say whatever you want!`", inline=True)
     embed2.add_field(name="}tts <language> <text>", value="`Forces the bot to say something in a voice chat with the specified language!`", inline=True)
@@ -1149,6 +1152,40 @@ async def dicklength(ctx):
     await client.say(embed=msg)
     print("============================================================")
     print("}dicklength")
+    print("{} ### {}".format(author, author.id))
+    print("============================================================")
+           
+# }hackergame <number> [type]
+@client.command(pass_context=True)
+async def hackergame(ctx, args: int = None, args2 = None):
+    author = ctx.message.author
+    msg = discord.Embed(colour=0x210150, description= "")
+    msg.title = ""
+    msg.set_footer(text=footer_text)
+    chance = random.randint(0, 100)
+    if args == None:
+        msg.add_field(name=":octagonal_sign: ", value="`}hackergame <number> [type]`")
+    else:
+        earned = random.randint(1, 10000)
+        hacked = random.randint(1, args)
+        destroyed = random.randint(1, hacked)
+        if args > 10000 and args >= 1:
+            msg.add_field(name=":octagonal_sign: ", value="`Please enter a number between 1 and 10000!`")
+        elif args2 == None:
+            if chance <= 60:
+                msg.add_field(name=":computer: ", value="```diff\n--- {} tried hacking into {} companies.\n \n- They have been cought!\n \n+ Failed to hack: {}\n \n! Money lost: {}$\n```".format(author.display_name, args, hacked, earned))
+            else:
+                msg.add_field(name=":computer: ", value="```diff\n--- {} tried hacking into {} companies.\n \n+ Successfully hacked: {}\n \n! Money earned: {}$\n```".format(author.display_name, args, hacked, earned))
+        elif args2 not in hackergame_types:
+            msg.add_field(name=":octagonal_sign: ", value="`Types of hacks you can use:`\n`{}`".format(hackergame_types))
+        else:
+            if chance <= 60:
+                msg.add_field(name=":computer: ", value="```diff\n--- {} tried hacking into {} companies using {}.\n \n- They have been cought!\n \n+ Failed to hack: {}\n \n! Money lost: {}$\n \n \n-Companies destroyed: {}\n```".format(author.display_name, args, args2, hacked, earned, destroyed))
+            else:
+                msg.add_field(name=":computer: ", value="```diff\n--- {} tried hacking into {} companies using {}.\n \n+ Successfully hacked: {}\n \n! Money earned: {}$\n \n \n-Companies destroyed: {}\n```".format(author.display_name, args, args2, hacked, earned, destroyed))
+    await client.say(embed=msg)
+    print("============================================================")
+    print("}hackergame <number>")
     print("{} ### {}".format(author, author.id))
     print("============================================================")
 
