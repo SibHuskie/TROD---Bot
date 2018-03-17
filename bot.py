@@ -352,8 +352,6 @@ games = ["with the other me...", "with monsters in the dark...", "with monsters 
          "with shadows...", "with your masks...", "with my mask...",
          "}help"]
 
-hackergame_types = ["ddos", "virus", "claim", "nuke", "raid"]
-
 # EVENT - TELLS YOU WHEN THE BOT TURNS ON
 @client.event
 async def on_ready():
@@ -508,11 +506,10 @@ async def help(ctx):
     embed1.add_field(name="}facepalm", value="`Use this to facepalm!`", inline=True)
     embed1.add_field(name="}suicide", value="`Use this to kill yourself!`", inline=True)
     embed1.add_field(name="}cry", value="`Cries!`", inline=True)
-    embed1.add_field(name="}hack <user>", value="`Hacks the mentioned user!`", inline=True)
+    embed1.add_field(name="}hack <number> <range>", value="`Attempts to hack into the specified amount of systems in a specified range!`", inline=True)
     embed1.add_field(name="}leave", value="`Leaves!`", inline=True)
     embed1.add_field(name="}rate <text>", value="`Rates the specified thing!`", inline=True)
     embed1.add_field(name="}dicklength", value="`Tells how big your dick is, even if you don't have one!`", inline=True)
-    embed1.add_field(name="}hackergame <number> [type]", value="`Tries to hack into the specified amount of companies. You can also add a type of hack to destroy the companies!`", inline=True)
 
     embed2.add_field(name="}say <text>", value="`Forces the bot to say whatever you want!`", inline=True)
     embed2.add_field(name="}tts <language> <text>", value="`Forces the bot to say something in a voice chat with the specified language!`", inline=True)
@@ -1021,24 +1018,6 @@ async def stare(ctx, userName: discord.Member = None):
     print("{} ### {}".format(author, author.id))
     print("============================================================")
 
-# }hack <user>
-@client.command(pass_context=True)
-async def hack(ctx, userName: discord.Member = None):
-    author = ctx.message.author
-    msg = discord.Embed(colour=0x210150, description= "")
-    msg.title = ""
-    msg.set_footer(text=footer_text)
-    if userName == None:
-        msg.add_field(name=":octagonal_sign: ", value="`}hack <user>`")
-    else:
-        msg.set_image(url="{}".format(random.choice(hacklinks)))
-        msg.add_field(name=":handshake: Interactions", value="`{}, you got hacked by {}! :3`".format(userName.display_name, author.display_name), inline=True)
-    await client.say(embed=msg)
-    print("============================================================")
-    print("}hack <user>")
-    print("{} ### {}".format(author, author.id))
-    print("============================================================")
-
 # }throw <user>
 @client.command(pass_context=True)
 async def throw(ctx, userName: discord.Member = None):
@@ -1154,37 +1133,33 @@ async def dicklength(ctx):
     print("{} ### {}".format(author, author.id))
     print("============================================================")
            
-# }hackergame <number> [type]
+# }hack <number> <range>
 @client.command(pass_context=True)
-async def hackergame(ctx, args: int = None, args2 = None):
+async def hack(ctx, number: int = None, rng: int = None):
     author = ctx.message.author
     msg = discord.Embed(colour=0x210150, description= "")
     msg.title = ""
     msg.set_footer(text=footer_text)
-    chance = random.randint(0, 100)
-    if args == None:
-        msg.add_field(name=":octagonal_sign: ", value="`}hackergame <number> [type]`")
+    chance = random.randint(0, 10)
+    if number == None or rng == None:
+        msg.add_field(name=":octagonal_sign: ", value="`}hack <number> <range>`")
     else:
-        earned = random.randint(1, 10000)
-        hacked = random.randint(1, args)
-        destroyed = random.randint(1, hacked)
-        if args > 10000 and args >= 1:
-            msg.add_field(name=":octagonal_sign: ", value="`Please enter a number between 1 and 10000!`")
-        elif args2 == None:
-            if chance <= 60:
-                msg.add_field(name=":computer: ", value="```diff\n--- {} tried hacking into {} companies.\n \n- They have been cought!\n \n+ Failed to hack: {}\n \n! Money lost: {}$\n```".format(author.display_name, args, hacked, earned))
-            else:
-                msg.add_field(name=":computer: ", value="```diff\n--- {} tried hacking into {} companies.\n \n+ Successfully hacked: {}\n \n! Money earned: {}$\n```".format(author.display_name, args, hacked, earned))
-        elif args2 not in hackergame_types:
-            msg.add_field(name=":octagonal_sign: ", value="`Types of hacks you can use:`\n`{}`".format(hackergame_types))
+        if number > 50000 and number < 0 or rng > 50000 and rng < 0:
+            msg.add_field(name=":computer: ", value="```diff\n- ! - The number and range must be lower than 50000 and higher than 0.\n```")
         else:
-            if chance <= 60:
-                msg.add_field(name=":computer: ", value="```diff\n--- {} tried hacking into {} companies using {}.\n \n- They have been cought!\n \n+ Failed to hack: {}\n \n! Money lost: {}$\n \n \n-Companies destroyed: {}\n```".format(author.display_name, args, args2, hacked, earned, destroyed))
+            hacked = random.randint(0, number)
+            failed = number - hacked
+            range1 = rng * number
+            money = random.randint(rng, range1)
+            lost = random.randint(0, money)
+            destroyed = random.randint(hacked, failed)
+            if chance <= 6:
+                msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - You have been caught!\n \n--- =============== ---\n+ - Systems Hacked: {}\n+ - Systems Failed: To Hack {}\n+ - Money Made: 0$\n+ - Money Lost: {}$\n+ - Systems Taken Down: {}\n--- =============== ---\n```".format(author.display_name, number, rng, hacked, failed, lost, destroyed))
             else:
-                msg.add_field(name=":computer: ", value="```diff\n--- {} tried hacking into {} companies using {}.\n \n+ Successfully hacked: {}\n \n! Money earned: {}$\n \n \n-Companies destroyed: {}\n```".format(author.display_name, args, args2, hacked, earned, destroyed))
+                msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n--- =============== ---\n+ - Systems Hacked: {}\n+ - Systems Failed: To Hack {}\n+ - Money Made: {}$\n+ - Money Lost: {}$\n+ - Systems Taken Down: {}\n--- =============== ---\n```".format(author.display_name, number, rng, hacked, failed, money, lost, destroyed))
     await client.say(embed=msg)
     print("============================================================")
-    print("}hackergame <number>")
+    print("}hack <number> <region>")
     print("{} ### {}".format(author, author.id))
     print("============================================================")
 
