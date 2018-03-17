@@ -9,7 +9,6 @@ import requests
 import json
 import time
 from gtts import gTTS
-from boto.s3.connection import S3Connection
 
 ''''''
 
@@ -1927,4 +1926,4 @@ async def close(ctx):
         print("============================================================")
 
 # TURNS ON THE BOT
-client.run(s3)
+client.run(BOT_TOKEN)
