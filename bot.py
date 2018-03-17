@@ -1140,11 +1140,11 @@ async def hack(ctx, number: int = None, rng: int = None):
     msg = discord.Embed(colour=0x210150, description= "")
     msg.title = ""
     msg.set_footer(text=footer_text)
-    chance = random.randint(0, 10)
+    chance = random.randint(0, 50000)
     if number == None or rng == None:
         msg.add_field(name=":octagonal_sign: ", value="`}hack <number> <range>`")
     else:
-        if number > 50000 and number < 0 or rng > 50000 and rng < 0:
+        if number > 50000 or rng > 50000 or number < 0 or rng < 0:
             msg.add_field(name=":computer: ", value="```diff\n- ! - The number and range must be lower than 50000 and higher than 0.\n```")
         else:
             hacked = random.randint(0, number)
@@ -1153,7 +1153,7 @@ async def hack(ctx, number: int = None, rng: int = None):
             money = random.randint(rng, range1)
             lost = random.randint(0, money)
             destroyed = random.randint(hacked, failed)
-            if chance <= 6:
+            if chance < rng:
                 msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - You have been caught!\n \n--- =============== ---\n+ - Systems Hacked: {}\n+ - Systems Failed: To Hack {}\n+ - Money Made: 0$\n+ - Money Lost: {}$\n+ - Systems Taken Down: {}\n--- =============== ---\n```".format(author.display_name, number, rng, hacked, failed, lost, destroyed))
             else:
                 msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n--- =============== ---\n+ - Systems Hacked: {}\n+ - Systems Failed: To Hack {}\n+ - Money Made: {}$\n+ - Money Lost: {}$\n+ - Systems Taken Down: {}\n--- =============== ---\n```".format(author.display_name, number, rng, hacked, failed, money, lost, destroyed))
