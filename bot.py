@@ -1140,23 +1140,101 @@ async def hack(ctx, number: int = None, rng: int = None):
     msg = discord.Embed(colour=0x210150, description= "")
     msg.title = ""
     msg.set_footer(text=footer_text)
-    chance = random.randint(0, 50000)
+    chance = random.randint(0, 100)
     if number == None or rng == None:
         msg.add_field(name=":octagonal_sign: ", value="`}hack <number> <range>`")
     else:
         if number > 50000 or rng > 50000 or number < 0 or rng < 0:
             msg.add_field(name=":computer: ", value="```diff\n- ! - The number and range must be lower than 50000 and higher than 0.\n```")
         else:
+            money1 = random.randint(0, rng)
             hacked = random.randint(0, number)
             failed = number - hacked
-            range1 = rng * number
-            money = random.randint(rng, range1)
-            lost = random.randint(0, money)
-            destroyed = random.randint(hacked, failed)
-            if chance < rng:
-                msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - You have been caught!\n \n--- =============== ---\n+ - Systems Hacked: {}\n+ - Systems Failed: To Hack {}\n+ - Money Made: 0$\n+ - Money Lost: {}$\n+ - Systems Taken Down: {}\n--- =============== ---\n```".format(author.display_name, number, rng, hacked, failed, lost, destroyed))
+            cracked = random.randint(hacked, failed)
+            if rng <= 1000:
+                money = money1 * 10
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 2000:
+                money = money1 * 0
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 3000:
+                money = money1 * 30
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 4000:
+                money = money1 * 40
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 5000:
+                money = money1 * 50
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 6000:
+                money = money1 * 60
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 7000:
+                money = money1 * 70
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 8000:
+                money = money1 * 80
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 9000:
+                money = money1 * 90
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 10000:
+                money = money1 * 100
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 20000:
+                money = money1 * 200
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 30000:
+                money = money1 * 300
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
+            elif rng <= 40000:
+                money = money1 * 400
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
             else:
-                msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n--- =============== ---\n+ - Systems Hacked: {}\n+ - Systems Failed: To Hack {}\n+ - Money Made: {}$\n+ - Money Lost: {}$\n+ - Systems Taken Down: {}\n--- =============== ---\n```".format(author.display_name, number, rng, hacked, failed, money, lost, destroyed))
+                money = money1 * 500
+                if chance <= 60:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, money, hacked, failed, cracked))
+                else:
+                    msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(athor.display_name, money, hacked, failed, cracked))
     await client.say(embed=msg)
     print("============================================================")
     print("}hack <number> <region>")
