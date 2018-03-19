@@ -1483,42 +1483,6 @@ async def earrape(ctx):
 # }warn <user> <reason>
 @client.command(pass_context=True)
 async def warn(ctx, userName: discord.Member = None, *, args = None):
-    punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
-    helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
-    mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
-    admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
-    manager_role = discord.utils.get(ctx.message.server.roles, name='Nightmares (Managers)')
-    owner_role = discord.utils.get(ctx.message.server.roles, name='Dark Lords (Owners)')
-    author = ctx.message.author
-    msg = discord.Embed(colour=0x210150, description= "")
-    msg.title = ""
-    msg.set_footer(text=footer_text)
-    if helper_role in author.roles or mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
-        if userName == None or args == None:
-            msg.add_field(name=":octagonal_sign: ", value="`}warn <user> <reason>`")
-            await client.say(embed=msg)
-        else:
-            if helper_role in userName.roles or mod_role in userName.roles or admin_role in userName.roles or manager_role in userName.roles or owner_role in userName.roles:
-                msg.add_field(name=":octagonal_sign: ", value="`You cannot warn other staff!`")
-                await client.say(embed=msg)
-            else:
-                await client.add_roles(userName, punished_role)
-                msg.add_field(name=":pencil: ", value="`{} warned {}!`\n`Reason: {}`".format(author.display_name, userName.display_name, args))
-                await client.say(embed=msg)
-                await asyncio.sleep(float(7))
-                await client.remove_roles(userName, punished_role)
-    else:
-        msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by staff!`")
-        await client.say(embed=msg)
-    print("============================================================")
-    print("}warn <user> <reason>")
-    print("{} ### {}".format(author, author.id))
-    print("============================================================")
-           
-# }warn <user> <reason>
-@client.command(pass_context=True)
-async def warn(ctx, userName: discord.Member = None, *, args = None):
-    punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
     helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
     mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
     admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
