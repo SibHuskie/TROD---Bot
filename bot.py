@@ -535,6 +535,7 @@ async def help(ctx):
     embed6.add_field(name="}takerole <user> <role name>", value="`Removes a specified role from the mentioned user!`", inline=True)
     embed6.add_field(name="}giverole <user> <role name>", value="`Gives a specified role to the mentioned user!`", inline=True)
     embed6.add_field(name="}masspardon", value="`Removes punishments from all punished members on the server!`", inline=True)
+    embed6.add_field(name="}masspunish", value="`Punishes all non-punished users on the server!`", inline=True)
 
     embed7.add_field(name="}rawsay <text>", value="`Forces the bot to say something, this supports formats!`", inline=True)
     embed7.add_field(name="}idban <user id>", value="`Bans a user with the matching ID as the one specified! This can ban users outside of the server!`", inline=True)
@@ -1798,6 +1799,32 @@ async def masspardon(ctx):
     await client.say(embed=msg)
     print("============================================================")
     print("}masspardon")
+    print("{} ### {}".format(author, author.id))
+    print("============================================================")
+
+# }masspunish
+@client.command(pass_context=True)
+async def masspunish(ctx):
+    punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
+    admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
+    manager_role = discord.utils.get(ctx.message.server.roles, name='Nightmares (Managers)')
+    owner_role = discord.utils.get(ctx.message.server.roles, name='Dark Lords (Owners)')
+    author = ctx.message.author
+    msg = discord.Embed(colour=0x210150, description= "")
+    msg.title = ""
+    msg.set_footer(text=footer_text)
+    if admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
+        for member in ctx.message.server.members:
+            if punished_role not in member.roles:
+                await client.add_roles(member, punished_role)
+            else:
+                print(".")
+        msg.add_field(name=":cloud_tornado: ", value="`I have punished all users on the server!`")
+    else:
+        msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Administrators, Managers and Owners!`")
+    await client.say(embed=msg)
+    print("============================================================")
+    print("}masspunish")
     print("{} ### {}".format(author, author.id))
     print("============================================================")
            
