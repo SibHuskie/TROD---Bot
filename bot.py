@@ -1780,6 +1780,8 @@ async def unban(ctx, userID = None):
 @client.command(pass_context=True)
 async def masspardon(ctx):
     punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
+    helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
+    mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
     admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
     manager_role = discord.utils.get(ctx.message.server.roles, name='Nightmares (Managers)')
     owner_role = discord.utils.get(ctx.message.server.roles, name='Dark Lords (Owners)')
@@ -1789,7 +1791,7 @@ async def masspardon(ctx):
     msg.set_footer(text=footer_text)
     if admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
         for member in ctx.message.server.members:
-            if punished_role in member.roles:
+            if punished_role in member.roles and helper_role not in member.roles and mod_role not in member.roles and admin_role not in member.roles and manager_role not in member.roles and owner_role not in member.roles:
                 await client.remove_roles(member, punished_role)
             else:
                 print(".")
@@ -1806,6 +1808,8 @@ async def masspardon(ctx):
 @client.command(pass_context=True)
 async def masspunish(ctx):
     punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
+    helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
+    mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
     admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
     manager_role = discord.utils.get(ctx.message.server.roles, name='Nightmares (Managers)')
     owner_role = discord.utils.get(ctx.message.server.roles, name='Dark Lords (Owners)')
@@ -1815,7 +1819,7 @@ async def masspunish(ctx):
     msg.set_footer(text=footer_text)
     if admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
         for member in ctx.message.server.members:
-            if punished_role not in member.roles:
+            if punished_role not in member.roles and helper_role not in member.roles and mod_role not in member.roles and admin_role not in member.roles and manager_role not in member.roles and owner_role not in member.roles::
                 await client.add_roles(member, punished_role)
             else:
                 print(".")
