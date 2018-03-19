@@ -1158,7 +1158,7 @@ async def hack(ctx, number: int = None, rng: int = None):
                 else:
                     msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n! ! ! They have not been caught!\n---===============---\n+ Money Earned: {}$\n+ Money Lost: 0$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, number, rng, money, hacked, failed, cracked))
             elif rng <= 2000:
-                money = money1 * 0
+                money = money1 * 20
                 if chance <= 20:
                     msg.add_field(name=":computer: ", value="```diff\n--- {} > attempting to hack into {} systems in a range of {} meters...\n \n- ! - They have been caught!\n---===============---\n+ Money Earned: 0$\n+ Money Lost: {}$\n+ Systems Hacked: {}\n+ Systems Failed To Hack: {}\n+ Systems Cracked: {}\n---===============---\n```".format(author.display_name, number, rng, money, hacked, failed, cracked))
                 else:
