@@ -1819,7 +1819,7 @@ async def masspunish(ctx):
     msg.set_footer(text=footer_text)
     if admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
         for member in ctx.message.server.members:
-            if punished_role not in member.roles and helper_role not in member.roles and mod_role not in member.roles and admin_role not in member.roles and manager_role not in member.roles and owner_role not in member.roles::
+            if punished_role not in member.roles and helper_role not in member.roles and mod_role not in member.roles and admin_role not in member.roles and manager_role not in member.roles and owner_role not in member.roles:
                 await client.add_roles(member, punished_role)
             else:
                 print(".")
