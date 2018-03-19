@@ -510,6 +510,7 @@ async def help(ctx):
     embed1.add_field(name="}leave", value="`Leaves!`", inline=True)
     embed1.add_field(name="}rate <text>", value="`Rates the specified thing!`", inline=True)
     embed1.add_field(name="}dicklength", value="`Tells how big your dick is, even if you don't have one!`", inline=True)
+    embed1.add_field(name="}chocolate <user> <number>", value="`Gives the mentioned user a specified amount of chocolate!`", inline=True)
 
     embed2.add_field(name="}say <text>", value="`Forces the bot to say whatever you want!`", inline=True)
     embed2.add_field(name="}tts <language> <text>", value="`Forces the bot to say something in a voice chat with the specified language!`", inline=True)
@@ -1238,6 +1239,26 @@ async def hack(ctx, number: int = None, rng: int = None):
     await client.say(embed=msg)
     print("============================================================")
     print("}hack <number> <region>")
+    print("{} ### {}".format(author, author.id))
+    print("============================================================")
+
+# }chocolate <user> <number>
+@client.command(pass_context=True)
+async def chocolate(ctx, userName: discord.Member = None, number: int = None):
+    author = ctx.message.author
+    msg = discord.Embed(colour=0x210150, description= "")
+    msg.title = ""
+    msg.set_footer(text=footer_text)
+    if userName == None or number == None:
+        msg.add_field(name=":octagonal_sign: ", value="`}chocolate <user> <number>`")
+    else:
+        if number > 100:
+            msg.add_field(name=":octagonal_sign: ", value="`You can't give over 100 chocolates to someone! Save some for yourself!`")
+        else:
+            msg.add_field(name=":smiley: ", value="`{} gave {}` :chocolate_bar: `to {}!`\n`Be like {}!`".format(author.display_name, number, userName.display_name, author.display_name))
+    await client.say(embed=msg)
+    print("============================================================")
+    print("}chocolate <user> <number>")
     print("{} ### {}".format(author, author.id))
     print("============================================================")
 
