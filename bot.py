@@ -478,7 +478,7 @@ async def help(ctx):
     embed7.set_footer(text=footer_text)
     embed8.set_footer(text=footer_text)
 
-    member_cmd_help = "```diff\n"
+    member_cmd_help = "```cs\n"
     member_cmd_help += "}ping\n# Shows your and the bot's ping! Use this to check if you or the bot is lagging!\n"
     member_cmd_help += "}help\n# Gives you a list of commands (this list)!\n"
     member_cmd_help += "}calculator <math problem>\n# Solves simple math problems!\n"
@@ -513,7 +513,7 @@ async def help(ctx):
     member_cmd_help += "}dicklength\n# Tells how big your dick is, even if you don't have one!\n"
     member_cmd_help += "}chocolate <user> <number>\n# Gives the mentioned user a specified amount of chocolate!\n"
     member_cmd_help += "```"
-    embed1.add_field(name=":skull_crossbones: ", value=member_cmd_help, inline=True)
+    embed1.add_field(name=":skull_crossbones: ", value="{}".format(member_cmd_help), inline=True)
 
     embed2.add_field(name="}say <text>", value="`Forces the bot to say whatever you want!`", inline=True)
     embed2.add_field(name="}tts <language> <text>", value="`Forces the bot to say something in a voice chat with the specified language!`", inline=True)
