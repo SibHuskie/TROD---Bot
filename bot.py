@@ -478,39 +478,42 @@ async def help(ctx):
     embed7.set_footer(text=footer_text)
     embed8.set_footer(text=footer_text)
 
-    embed1.add_field(name="}ping", value="`Shows your and the bot's ping! Use this to check if you or the bot is lagging!`", inline=True)
-    embed1.add_field(name="}help", value="`Gives you a list of commands (this list)!`", inline=True)
-    embed1.add_field(name="}calculator <math problem>", value="`Solves simple math problems!`", inline=True)
-    embed1.add_field(name="}battle <user>", value="`Use this to fight the mentioned user!`", inline=True)
-    embed1.add_field(name="}ship <user1> <user2>", value="`Ships the mentioned users!`", inline=True)
-    embed1.add_field(name="}rps <rock/paper/scissors>", value="`Play rock, paper, scissors with the bot!`", inline=True)
-    embed1.add_field(name="}nothing", value="`Does nothing! Very essential for bots!`", inline=True)
-    embed1.add_field(name="}serverinfo", value="`Gives you information about the server!`", inline=True)
-    embed1.add_field(name="}kill <user>", value="`Kills the mentioned user!`", inline=True)
-    embed1.add_field(name="}report <user> <reason>", value="`Reports the mentioned user to the staff! Report people that are breaking the rules only!`", inline=True)
-    embed1.add_field(name="}eightball <yes or no question>", value="`Asks the magic eight ball a yes or no question! This always tells the truth!`", inline=True)
-    embed1.add_field(name="}roast <user>", value="`Use this to roast someone so hard that they'll start to melt!`", inline=True)
-    embed1.add_field(name="}hug <user>", value="`Use this to hug the mentioned user!`", inline=True)
-    embed1.add_field(name="}kiss <user>", value="`Use this to kiss the mentioned user!`", inline=True)
-    embed1.add_field(name="}cuddle <user>", value="`Use this to cuddle with the mentioned user!`", inline=True)
-    embed1.add_field(name="}pat <user>", value="`Use this to pat the mentioned user!`", inline=True)
-    embed1.add_field(name="}nom <user>", value="`Use this to nom the mentioned user!`", inline=True)
-    embed1.add_field(name="}punch <user>", value="`Punches the mentioned user!`", inline=True)
-    embed1.add_field(name="}bloodsuck <user>", value="`Sucks the mentioned user's blood!`", inline=True)
-    embed1.add_field(name="}bite <user>", value="`Bites the mentioned user!`", inline=True)
-    embed1.add_field(name="}throw <user>", value="`Throws the mentioned user!`", inline=True)
-    embed1.add_field(name="}poke <user>", value="`Use this to poke the mentioned user!`", inline=True)
-    embed1.add_field(name="}highfive <user>", value="`Use this to highfive the mentioned user!`", inline=True)
-    embed1.add_field(name="}stare <user>", value="`Stares at the mentioned user!`", inline=True)
-    embed1.add_field(name="}slap <user>", value="`Slaps the mentioned user!`", inline=True)
-    embed1.add_field(name="}facepalm", value="`Use this to facepalm!`", inline=True)
-    embed1.add_field(name="}suicide", value="`Use this to kill yourself!`", inline=True)
-    embed1.add_field(name="}cry", value="`Cries!`", inline=True)
-    embed1.add_field(name="}hack <number> <range>", value="`Attempts to hack into the specified amount of systems in a specified range!`", inline=True)
-    embed1.add_field(name="}leave", value="`Leaves!`", inline=True)
-    embed1.add_field(name="}rate <text>", value="`Rates the specified thing!`", inline=True)
-    embed1.add_field(name="}dicklength", value="`Tells how big your dick is, even if you don't have one!`", inline=True)
-    embed1.add_field(name="}chocolate <user> <number>", value="`Gives the mentioned user a specified amount of chocolate!`", inline=True)
+    member_cmd_help = "```diff\n"
+    member_cmd_help += "}ping\n# Shows your and the bot's ping! Use this to check if you or the bot is lagging!\n"
+    member_cmd_help += "}help\n# Gives you a list of commands (this list)!\n"
+    member_cmd_help += "}calculator <math problem>\n# Solves simple math problems!\n"
+    member_cmd_help += "}battle <user>\n# Use this to fight the mentioned user!\n"
+    member_cmd_help += "}ship <user1> <user2>\n# Ships the mentioned users!\n"
+    member_cmd_help += "}rps <rock/paper/scissors>\n# Play rock, paper, scissors with the bot!\n"
+    member_cmd_help += "}nothing\n# Does nothing! Very essential for bots!\n"
+    member_cmd_help += "}serverinfo\n# Gives you information about the server!\n"
+    member_cmd_help += "}kill <user>\n# Kills the mentioned user!\n"
+    member_cmd_help += "}report <user> <reason>\n# Reports the mentioned user to the staff! Report people that are breaking the rules only!\n"
+    member_cmd_help += "}eightball <yes or no question>\n# Asks the magic eight ball a yes or no question! This always tells the truth!\n"
+    member_cmd_help += "}roast <user>\n# Use this to roast someone so hard that they'll start to melt!\n"
+    member_cmd_help += "}hug <user>\n# Use this to hug the mentioned user!\n"
+    member_cmd_help += "}kiss <user>\n# Use this to kiss the mentioned user!\n"
+    member_cmd_help += "}cuddle <user>\n# Use this to cuddle with the mentioned user!\n"
+    member_cmd_help += "}pat <user>\n# Use this to pat the mentioned user!\n"
+    member_cmd_help += "}nom <user>\n# Use this to nom the mentioned user!\n"
+    member_cmd_help += "}punch <user>\n# Punches the mentioned user!\n"
+    member_cmd_help += "}bloodsuck <user>\n# Sucks the mentioned user's blood!\n"
+    member_cmd_help += "}bite <user>\n# Bites the mentioned user!\n"
+    member_cmd_help += "}throw <user>\n# Throws the mentioned user!\n"
+    member_cmd_help += "}poke <user>\n# Use this to poke the mentioned user!\n"
+    member_cmd_help += "}highfive <user>\n# Use this to highfive the mentioned user!\n"
+    member_cmd_help += "}stare <user>\n# Stares at the mentioned user!\n"
+    member_cmd_help += "}slap <user>\n# Slaps the mentioned user!\n"
+    member_cmd_help += "}facepalm\n# Use this to facepalm!\n"
+    member_cmd_help += "}suicide\n# Use this to kill yourself!\n"
+    member_cmd_help += "}cry\n# Cries!\n"
+    member_cmd_help += "}hack <user>\n# Hacks the mentioned user!\n"
+    member_cmd_help += "}leave\n# Leaves!\n"
+    member_cmd_help += "}rate <text>\n# Rates the specified thing!\n"
+    member_cmd_help += "}dicklength\n# Tells how big your dick is, even if you don't have one!\n"
+    member_cmd_help += "}chocolate <user> <number>\n# Gives the mentioned user a specified amount of chocolate!\n"
+    member_cmd_help += "```"
+    embed1.add_field(name=":skull_crossbones: ", value=member_cmd_help, inline=True)
 
     embed2.add_field(name="}say <text>", value="`Forces the bot to say whatever you want!`", inline=True)
     embed2.add_field(name="}tts <language> <text>", value="`Forces the bot to say something in a voice chat with the specified language!`", inline=True)
