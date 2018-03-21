@@ -451,109 +451,11 @@ client.remove_command('help')
 @client.command(pass_context=True)
 async def help(ctx):
     author = ctx.message.author
-    embed1 = discord.Embed(colour=0x4ec0ca, description= "")
-    embed2 = discord.Embed(colour=0x2100ff, description= "")
-    embed3 = discord.Embed(colour=0x32325e, description= "")
-    embed4 = discord.Embed(colour=0x0fb400, description= "")
-    embed5 = discord.Embed(colour=0x2d77df, description= "")
-    embed6 = discord.Embed(colour=0xff0000, description= "")
-    embed7 = discord.Embed(colour=0x4d009e, description= "")
-    embed8 = discord.Embed(colour=0x000000, description= "")
-
-    embed1.title = "COMMANDS FOR EVERYONE"
-    embed2.title = "VIP COMMANDS"
-    embed3.title = "LEGEND COMMANDS"
-    embed4.title = "HELPER COMMANDS"
-    embed5.title = "MODERATOR COMMANDS"
-    embed6.title = "ADMINISTRATOR COMMANDS"
-    embed7.title = "MANAGER COMMANDS"
-    embed8.title = "OWNER COMMANDS"
-
-    embed1.set_footer(text=footer_text)
-    embed2.set_footer(text=footer_text)
-    embed3.set_footer(text=footer_text)
-    embed4.set_footer(text=footer_text)
-    embed5.set_footer(text=footer_text)
-    embed6.set_footer(text=footer_text)
-    embed7.set_footer(text=footer_text)
-    embed8.set_footer(text=footer_text)
-
-    embed1.add_field(name="}ping", value="`Shows your and the bot's ping! Use this to check if you or the bot is lagging!`", inline=True)
-    embed1.add_field(name="}help", value="`Gives you a list of commands (this list)!`", inline=True)
-    embed1.add_field(name="}calculator <math problem>", value="`Solves simple math problems!`", inline=True)
-    embed1.add_field(name="}battle <user>", value="`Use this to fight the mentioned user!`", inline=True)
-    embed1.add_field(name="}ship <user1> <user2>", value="`Ships the mentioned users!`", inline=True)
-    embed1.add_field(name="}rps <rock/paper/scissors>", value="`Play rock, paper, scissors with the bot!`", inline=True)
-    embed1.add_field(name="}nothing", value="`Does nothing! Very essential for bots!`", inline=True)
-    embed1.add_field(name="}serverinfo", value="`Gives you information about the server!`", inline=True)
-    embed1.add_field(name="}kill <user>", value="`Kills the mentioned user!`", inline=True)
-    embed1.add_field(name="}report <user> <reason>", value="`Reports the mentioned user to the staff! Report people that are breaking the rules only!`", inline=True)
-    embed1.add_field(name="}eightball <yes or no question>", value="`Asks the magic eight ball a yes or no question! This always tells the truth!`", inline=True)
-    embed1.add_field(name="}roast <user>", value="`Use this to roast someone so hard that they'll start to melt!`", inline=True)
-    embed1.add_field(name="}hug <user>", value="`Use this to hug the mentioned user!`", inline=True)
-    embed1.add_field(name="}kiss <user>", value="`Use this to kiss the mentioned user!`", inline=True)
-    embed1.add_field(name="}cuddle <user>", value="`Use this to cuddle with the mentioned user!`", inline=True)
-    embed1.add_field(name="}pat <user>", value="`Use this to pat the mentioned user!`", inline=True)
-    embed1.add_field(name="}nom <user>", value="`Use this to nom the mentioned user!`", inline=True)
-    embed1.add_field(name="}punch <user>", value="`Punches the mentioned user!`", inline=True)
-    embed1.add_field(name="}bloodsuck <user>", value="`Sucks the mentioned user's blood!`", inline=True)
-    embed1.add_field(name="}bite <user>", value="`Bites the mentioned user!`", inline=True)
-    embed1.add_field(name="}throw <user>", value="`Throws the mentioned user!`", inline=True)
-    embed1.add_field(name="}poke <user>", value="`Use this to poke the mentioned user!`", inline=True)
-    embed1.add_field(name="}highfive <user>", value="`Use this to highfive the mentioned user!`", inline=True)
-    embed1.add_field(name="}stare <user>", value="`Stares at the mentioned user!`", inline=True)
-    embed1.add_field(name="}slap <user>", value="`Slaps the mentioned user!`", inline=True)
-    embed1.add_field(name="}facepalm", value="`Use this to facepalm!`", inline=True)
-    embed1.add_field(name="}suicide", value="`Use this to kill yourself!`", inline=True)
-    embed1.add_field(name="}cry", value="`Cries!`", inline=True)
-    embed1.add_field(name="}hack <user>", value="`Hacks the mentioned user!`", inline=True)
-    embed1.add_field(name="}leave", value="`Leaves!`", inline=True)
-    embed1.add_field(name="}rate <text>", value="`Rates the specified thing!`", inline=True)
-    embed1.add_field(name="}dicklength", value="`Tells how big your dick is, even if you don't have one!`", inline=True)
-
-    embed2.add_field(name="}say <text>", value="`Forces the bot to say whatever you want!`", inline=True)
-    embed2.add_field(name="}tts <language> <text>", value="`Forces the bot to say something in a voice chat with the specified language!`", inline=True)
-    embed2.add_field(name="}disconnect", value="`Forces the bot the leave a voice chat!`", inline=True)
-    embed2.add_field(name="}fart", value="`Farts in a voice chat!`", inline=True)
-    embed2.add_field(name="}earrape", value="`Plays earrape in a voice chat!`", inline=True)
-
-    embed3.add_field(name="?", value="`No commands yet!`", inline=True)
-
-    embed4.add_field(name="}userinfo <user>", value="`Gives you information about the mentioned user!`", inline=True)
-    embed4.add_field(name="}punish <user> [reason]", value="`Punishes the mentioned user! Punished people can only see messages in channels, but can't talk!`", inline=True)
-    embed4.add_field(name="}pardon <user>", value="`Revomes the punishment from the mentioned user!`", inline=True)
-    embed4.add_field(name="}purge <number>", value="`Deletes the specified amount of messages in a channel!`", inline=True)
-    embed4.add_field(name="}nick <user> [nickname]", value="`Changes the mentioned user's nickname to whatever you specify!`", inline=True)
-    embed4.add_field(name="}warn <user> <reason>", value="`Warns the mentioned user!`", inline=True)
-
-    embed5.add_field(name="}ban <user> [reason]", value="`Bans the mentioned user!`", inline=True)
-    embed5.add_field(name="}unban <user id>", value="`Unbans the user with the specified ID!`", inline=True)
-    embed5.add_field(name="}kick <user> [reason]", value="`Kicks the mentioned user!`", inline=True)
-
-    embed6.add_field(name="}embed <title> <description> <field name> <field value> <footer>", value="`Forces the bot to create custom embeds!`", inline=True)
-    embed6.add_field(name="}takerole <user> <role name>", value="`Removes a specified role from the mentioned user!`", inline=True)
-    embed6.add_field(name="}giverole <user> <role name>", value="`Gives a specified role to the mentioned user!`", inline=True)
-    embed6.add_field(name="}masspardon", value="`Removes punishments from all punished members on the server!`", inline=True)
-    embed6.add_field(name="}masspunish", value="`Punishes all non-punished users on the server!`", inline=True)
-
-    embed7.add_field(name="}rawsay <text>", value="`Forces the bot to say something, this supports formats!`", inline=True)
-    embed7.add_field(name="}idban <user id>", value="`Bans a user with the matching ID as the one specified! This can ban users outside of the server!`", inline=True)
-
-    embed8.add_field(name="}pan <user> [text]", value="`Uses the mighty pan to destroy the mentioned user!`", inline=True)
-
     msg = discord.Embed(colour=0x210150, description= "")
     msg.title = ""
-    msg.add_field(name=":incoming_envelope: ", value="`A list of commands has been sent to your DMs!`")
+    msg.add_field(name=":incoming_envelope: ", value="`You can see all commands in the #darkness channel!`")
     msg.set_footer(text=footer_text)
     await client.say(embed=msg)
-    await client.send_message(author, embed=embed8)
-    await client.send_message(author, embed=embed7)
-    await client.send_message(author, embed=embed6)
-    await client.send_message(author, embed=embed5)
-    await client.send_message(author, embed=embed4)
-    await client.send_message(author, embed=embed3)
-    await client.send_message(author, embed=embed2)
-    await client.send_message(author, embed=embed1)
     print("============================================================")
     print("}help")
     print("{} ### {}".format(author, author.id))
