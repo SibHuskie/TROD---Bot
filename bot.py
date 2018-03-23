@@ -1677,61 +1677,6 @@ async def unban(ctx, userID = None):
     print("============================================================")
 
 '''ADMIN COMMANDS'''
-# }mass <option> [args]
-@client.command(pass_context=True)
-async def mass(ctx, arg = None, *, args = None):
-    member_role = discord.utils.get(ctx.message.server.roles, name='Lost Souls (Members)')
-    punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
-    helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
-    mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
-    admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
-    manager_role = discord.utils.get(ctx.message.server.roles, name='Nightmares (Managers)')
-    owner_role = discord.utils.get(ctx.message.server.roles, name='Dark Lords (Owners)')
-    author = ctx.message.author
-    msg = discord.Embed(colour=0x210150, description= "")
-    msg.title = ""
-    msg.set_footer(text=footer_text)
-    if admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
-        if arg == None:
-            msg.add_field(name=":octagonal_sign: ", value="`}mass <option> [args]`\n \n`Options:`\n`}mass punish - Punishes all non-punished users on the server!`\n`}mass pardon - Removes punishments from all punished members on the server!`\n`}mass dm <message> - DMs everyone on the server with the message you provided!`")
-        else:
-            if arg == "punish":
-                await client.say("```diff\n- Punishing all non-punished users on the server...\n```")
-                for member in ctx.message.server.members:
-                    if punished_role not in member.roles and helper_role not in member.roles and mod_role not in member.roles and admin_role not in member.roles and manager_role not in member.roles and owner_role not in member.roles:
-                        await client.add_roles(member, punished_role)
-                    else:
-                        print(".")
-                msg.add_field(name=":cloud_tornado: ", value="`I have punished all users on the server!`")
-            elif arg == "pardon":
-                await client.say("```diff\n- Removing punishments from all punished users on the server...\n```")
-                for member in ctx.message.server.members:
-                    if punished_role in member.roles and helper_role not in member.roles and mod_role not in member.roles and admin_role not in member.roles and manager_role not in member.roles and owner_role not in member.roles:
-                        await client.remove_roles(member, punished_role)
-                    else:
-                        print(".")
-                msg.add_field(name=":cloud_tornado: ", value="`I have pardoned all punished users on the server!`")
-            elif arg == "dm":
-                if args == None:
-                    msg.add_field(name=":octagonal_sign: ", value="`}mass dm <message>`")
-                else:
-                    await client.say("```diff\n- Sliding in everyone's DMs...\n```")
-                    for member in ctx.message.server.members:
-                        if member_role in member.roles:
-                            await client.send_message(member, args)
-                        else:
-                            print(".")
-                    
-            else:
-                msg.add_field(name=":octagonal_sign: ", value="`}mass <option> [args]`\n \n`Options:`\n`}mass punish - Punishes all non-punished users on the server!`\n`}mass pardon - Removes punishments from all punished members on the server!`\n`}mass dm <message> - DMs everyone on the server with the message you provided!`")
-    else:
-        msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Administrators, Managers and Owners!`")
-    await client.say(embed=msg)
-    print("============================================================")
-    print("}mass <option> [args]")
-    print("{} ### {}".format(author, author.id))
-    print("============================================================")
-
 # }embed <title> <description> <field name> <field value> <footer>
 @client.command(pass_context=True)
 async def embed(ctx, title = None, desc = None, name = None, value = None, footer = None):
@@ -1824,6 +1769,61 @@ async def giverole(ctx, userName: discord.Member = None, *, args = None):
     print("============================================================")
 
 '''MANAGER COMMANDS'''
+# }mass <option> [args]
+@client.command(pass_context=True)
+async def mass(ctx, arg = None, *, args = None):
+    member_role = discord.utils.get(ctx.message.server.roles, name='Lost Souls (Members)')
+    punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
+    helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
+    mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
+    admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
+    manager_role = discord.utils.get(ctx.message.server.roles, name='Nightmares (Managers)')
+    owner_role = discord.utils.get(ctx.message.server.roles, name='Dark Lords (Owners)')
+    author = ctx.message.author
+    msg = discord.Embed(colour=0x210150, description= "")
+    msg.title = ""
+    msg.set_footer(text=footer_text)
+    if manager_role in author.roles or owner_role in author.roles:
+        if arg == None:
+            msg.add_field(name=":octagonal_sign: ", value="`}mass <option> [args]`\n \n`Options:`\n`}mass punish - Punishes all non-punished users on the server!`\n`}mass pardon - Removes punishments from all punished members on the server!`\n`}mass dm <message> - DMs everyone on the server with the message you provided!`")
+        else:
+            if arg == "punish":
+                await client.say("```diff\n- Punishing all non-punished users on the server...\n```")
+                for member in ctx.message.server.members:
+                    if punished_role not in member.roles and helper_role not in member.roles and mod_role not in member.roles and admin_role not in member.roles and manager_role not in member.roles and owner_role not in member.roles:
+                        await client.add_roles(member, punished_role)
+                    else:
+                        print(".")
+                msg.add_field(name=":cloud_tornado: ", value="`I have punished all users on the server!`")
+            elif arg == "pardon":
+                await client.say("```diff\n- Removing punishments from all punished users on the server...\n```")
+                for member in ctx.message.server.members:
+                    if punished_role in member.roles and helper_role not in member.roles and mod_role not in member.roles and admin_role not in member.roles and manager_role not in member.roles and owner_role not in member.roles:
+                        await client.remove_roles(member, punished_role)
+                    else:
+                        print(".")
+                msg.add_field(name=":cloud_tornado: ", value="`I have pardoned all punished users on the server!`")
+            elif arg == "dm":
+                if args == None:
+                    msg.add_field(name=":octagonal_sign: ", value="`}mass dm <message>`")
+                else:
+                    await client.say("```diff\n- Sliding in everyone's DMs...\n```")
+                    for member in ctx.message.server.members:
+                        if member_role in member.roles:
+                            await client.send_message(member, args)
+                        else:
+                            print(".")
+                    
+            else:
+                msg.add_field(name=":octagonal_sign: ", value="`}mass <option> [args]`\n \n`Options:`\n`}mass punish - Punishes all non-punished users on the server!`\n`}mass pardon - Removes punishments from all punished members on the server!`\n`}mass dm <message> - DMs everyone on the server with the message you provided!`")
+    else:
+        msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Managers and Owners!`")
+    await client.say(embed=msg)
+    print("============================================================")
+    print("}mass <option> [args]")
+    print("{} ### {}".format(author, author.id))
+    print("============================================================")
+           
 # }rawsay <text>
 @client.command(pass_context=True)
 async def rawsay(ctx, *, args = None):
