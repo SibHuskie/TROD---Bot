@@ -1487,9 +1487,9 @@ async def pardon(ctx, userName: discord.Member = None):
     print("{} ### {}".format(author, author.id))
     print("============================================================")
     
-# }purge <number> [arg]
+# }nick <user> [nickname]
 @client.command(pass_context=True)
-async def purge(ctx, number: int = None, arg = None):
+async def nick(ctx, userName: discord.Member = None, *, args = None):
     helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
     mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
     admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
@@ -1500,29 +1500,21 @@ async def purge(ctx, number: int = None, arg = None):
     msg.title = ""
     msg.set_footer(text=footer_text)
     if helper_role in author.roles or mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
-        if number == None:
-            msg.add_field(name=":octagonal_sign: ", value="`}purge <number>`")
+        if userName == None:
+            msg.add_field(name=":octagonal_sign: ", value="`}nick <user> [nickname]`")
+        elif args == None:
+            nickname = args
+            await client.change_nickname(userName, nickname)
+            msg.add_field(name=":label: ", value="`{} removed {}'s nickname`".format(author.display_name, userName.display_name))
         else:
-            if arg == "-bot":
-                for msg in ctx.message.channel.messages:
-                    for msg_author in msg:
-                        if msg_author.bot == True:
-                            await client.delete_message(msg)
-                if len(deleted) < number:
-                    msg.add_field(name=":wastebasket: ", value="`{} tried to delete {} messages sent from bots!`\n`Deleted {} message(s)!`".format(author.display_name, number, len(deleted)))
-                else:
-                    msg.add_field(name=":wastebasket: ", value="`{} deleted {} message(s) sent from bots!`".format(author.display_name, len(deleted)))
-            else:
-                deleted = await client.purge_from(ctx.message.channel, limit=number)
-                if len(deleted) < number:
-                    msg.add_field(name=":wastebasket: ", value="`{} tried to delete {} messages!`\n`Deleted {} message(s)!`".format(author.display_name, number, len(deleted)))
-                else:
-                    msg.add_field(name=":wastebasket: ", value="`{} deleted {} message(s)!`".format(author.display_name, len(deleted)))
+            nickname = args
+            msg.add_field(name=":label: ", value="`{} changed {}'s nickname to {}!`".format(author.display_name, userName.display_name, args))
+            await client.change_nickname(userName, nickname)
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by staff!`")
     await client.say(embed=msg)
     print("============================================================")
-    print("}purge <number>")
+    print("}nick <user> <nickname>")
     print("{} ### {}".format(author, author.id))
     print("============================================================")
 
