@@ -1487,9 +1487,9 @@ async def pardon(ctx, userName: discord.Member = None):
     print("{} ### {}".format(author, author.id))
     print("============================================================")
     
-# }purge <number>
+# }purge <number> [arg]
 @client.command(pass_context=True)
-async def purge(ctx, number: int = None):
+async def purge(ctx, number: int = None, arg = None):
     helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
     mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
     admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
@@ -1503,11 +1503,24 @@ async def purge(ctx, number: int = None):
         if number == None:
             msg.add_field(name=":octagonal_sign: ", value="`}purge <number>`")
         else:
-            deleted = await client.purge_from(ctx.message.channel, limit=number)
-            if len(deleted) < number:
-                msg.add_field(name=":wastebasket: ", value="`{} tried to delete {} messages!`\n`Deleted {} message(s)!`".format(author.display_name, number, len(deleted)))
+            if arg == "-bot":
+                deleted = await client.purge_from(ctx.message.channel, limit=number, check=bot)
+                if len(deleted) < number:
+                    msg.add_field(name=":wastebasket: ", value="`{} tried to delete {} messages sent from bots!`\n`Deleted {} message(s)!`".format(author.display_name, number, len(deleted)))
+                else:
+                    msg.add_field(name=":wastebasket: ", value="`{} deleted {} message(s) sent from bots!`".format(author.display_name, len(deleted)))
+            elif arg == discord.Member:
+                deleted = await client.purge_from(ctx.message.channel, limit=number, check=arg)
+                if len(deleted) < number:
+                    msg.add_field(name=":wastebasket: ", value="`{} tried to delete {} messages sent from {}!`\n`Deleted {} message(s)!`".format(author.display_name, number, len(deleted), arg))
+                else:
+                    msg.add_field(name=":wastebasket: ", value="`{} deleted {} message(s) sent from bots!`".format(author.display_name, len(deleted), arg))
             else:
-                msg.add_field(name=":wastebasket: ", value="`{} deleted {} message(s)!`".format(author.display_name, len(deleted)))
+                deleted = await client.purge_from(ctx.message.channel, limit=number)
+                if len(deleted) < number:
+                    msg.add_field(name=":wastebasket: ", value="`{} tried to delete {} messages!`\n`Deleted {} message(s)!`".format(author.display_name, number, len(deleted)))
+                else:
+                    msg.add_field(name=":wastebasket: ", value="`{} deleted {} message(s)!`".format(author.display_name, len(deleted)))
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by staff!`")
     await client.say(embed=msg)
