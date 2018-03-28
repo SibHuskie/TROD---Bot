@@ -1504,17 +1504,14 @@ async def purge(ctx, number: int = None, arg = None):
             msg.add_field(name=":octagonal_sign: ", value="`}purge <number>`")
         else:
             if arg == "-bot":
-                deleted = await client.purge_from(ctx.message.channel, limit=number, check=bot)
+                for msg in ctx.message.channel.messages:
+                    for msg_author in msg:
+                        if msg_author.bot == True:
+                            await client.delete_message(msg)
                 if len(deleted) < number:
                     msg.add_field(name=":wastebasket: ", value="`{} tried to delete {} messages sent from bots!`\n`Deleted {} message(s)!`".format(author.display_name, number, len(deleted)))
                 else:
                     msg.add_field(name=":wastebasket: ", value="`{} deleted {} message(s) sent from bots!`".format(author.display_name, len(deleted)))
-            elif arg == discord.Member:
-                deleted = await client.purge_from(ctx.message.channel, limit=number, check=arg)
-                if len(deleted) < number:
-                    msg.add_field(name=":wastebasket: ", value="`{} tried to delete {} messages sent from {}!`\n`Deleted {} message(s)!`".format(author.display_name, number, len(deleted), arg))
-                else:
-                    msg.add_field(name=":wastebasket: ", value="`{} deleted {} message(s) sent from bots!`".format(author.display_name, len(deleted), arg))
             else:
                 deleted = await client.purge_from(ctx.message.channel, limit=number)
                 if len(deleted) < number:
