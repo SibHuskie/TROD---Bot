@@ -381,9 +381,6 @@ client.loop.create_task(gamechanger())
 # EVENT - JOIN / LEAVE
 @client.async_event
 async def on_member_join(userName: discord.User):
-    member_role = discord.utils.get(message.server.roles, name='Lost Souls (Members)')
-    bot_role1 = discord.utils.get(message.server.roles, name='BOTS')
-    bot_role2 = discord.utils.get(message.server.roles, name='Corrupted Souls (BOTs)')
     joins = ["`{}` joined the game!".format(userName),
              "`{}`, we've been expecting you...".format(userName),
              "`{}`, hey! We hope you brought pizza!".format(userName),
@@ -410,11 +407,6 @@ async def on_member_join(userName: discord.User):
              "`{}` joined! Please no hacks!".format(userName),
              "`{}` joined the server! Seems legit.".format(userName)]
     await client.send_message(client.get_channel("414092782408433684"), "{}".format(random.choice(joins)))
-    if userName.bot == True:
-        await client.add_roles(userName, bot_role1)
-        await client.add_roles(userName, bot_role2)
-    else:
-        await client.add_roles(userName, member_role)
     print("============================================================")
     print("JOIN EVENT")
     print("{} ### {}".format(userName, userName.id))
@@ -1592,6 +1584,36 @@ async def nick(ctx, userName: discord.Member = None, *, args = None):
     print("============================================================")
 
 '''MOD COMMANDS'''
+# }partner <user>
+@client.command(pass_context=True)
+async def partner(ctx, userName: discord.Member = None):
+    partner_role = discord.utils.get(ctx.message.server.roles, name='Dark Legion (Partners)')
+    mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
+    admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
+    manager_role = discord.utils.get(ctx.message.server.roles, name='Nightmares (Managers)')
+    owner_role = discord.utils.get(ctx.message.server.roles, name='Dark Lords (Owners)')
+    author = ctx.message.author
+    msg = discord.Embed(colour=0x210150, description= "")
+    msg.title = ""
+    msg.set_footer(text=footer_text)
+    if mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
+        if userName == None:
+            msg.add_field(name=":octagonal_sign: ", value="`}partner <user>`")
+        else:
+            if partner_role in userName.roles:
+                await client.remove_roles(userName, partner_role)
+                msg.add_field(name=":credit_card: ", value="`{} removed the partnership with {}!`".format(author.display_name, userName.display_name))
+            else:
+                await client.add_roles(userName, partner_role)
+                msg.add_field(name=":credit_card: ", value="{} partnered with {}!".format(author.display_name, userName.display_name))
+    else:
+        msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Moderators, Administrators, Managers and Owners!`")
+    await client.say(embed=msg)
+    print("============================================================")
+    print("}partner <user>")
+    print("{} ### {}".format(author, author.id))
+    print("============================================================")
+
 # }ban <user> [reason]
 @client.command(pass_context=True)
 async def ban(ctx, userName: discord.Member = None, *, args = None):
