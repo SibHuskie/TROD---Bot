@@ -381,6 +381,9 @@ client.loop.create_task(gamechanger())
 # EVENT - JOIN / LEAVE
 @client.async_event
 async def on_member_join(userName: discord.User):
+    member_role = discord.utils.get(ctx.message.server.roles, name='Lost Souls (Members)')
+    bot_role1 = discord.utils.get(ctx.message.server.roles, name='BOTS')
+    bot_role2 = discord.utils.get(ctx.message.server.roles, name='Corrupted Souls (BOTs)')
     joins = ["`{}` joined the game!".format(userName),
              "`{}`, we've been expecting you...".format(userName),
              "`{}`, hey! We hope you brought pizza!".format(userName),
@@ -407,6 +410,11 @@ async def on_member_join(userName: discord.User):
              "`{}` joined! Please no hacks!".format(userName),
              "`{}` joined the server! Seems legit.".format(userName)]
     await client.send_message(client.get_channel("414092782408433684"), "{}".format(random.choice(joins)))
+    if userName.bot == True:
+        await client.add_roles(userName, bot_role1)
+        await client.add_roles(userName, bot_role2)
+    else:
+        await client.add_roles(userName, member_role)
     print("============================================================")
     print("JOIN EVENT")
     print("{} ### {}".format(userName, userName.id))
