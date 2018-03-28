@@ -467,12 +467,12 @@ async def ping(ctx):
     channel = ctx.message.channel
     author = ctx.message.author
     msg = discord.Embed(colour=0x210150, description= "")
-    msg.title = ""
-    msg.add_field(name=":satellite: ", value="`Yes, I am here. No need to ping me.`\n`Ping: {}ms`".format(round((t2-t1)*1000)))
     msg.set_footer(text=footer_text)
+    msg.title = ""
     t1 = time.perf_counter()
     await client.send_typing(channel)
     t2 = time.perf_counter()
+    msg.add_field(name=":satellite: ", value="`Yes, I am here. No need to ping me.`\n`Ping: {}ms`".format(round((t2-t1)*1000)))
     await client.say(embed=msg)
     print("============================================================")
     print("}ping")
