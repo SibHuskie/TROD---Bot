@@ -1420,7 +1420,7 @@ async def warn(ctx, userName: discord.Member = None, *, args = None):
            
 # }punish <user> <time> [reason]
 @client.command(pass_context=True)
-async def punish(ctx, userName: discord.Member = None, time = None, *, args = None):
+async def punish(ctx, userName: discord.Member = None, time: int = None, *, args = None):
     punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
     helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
     mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
