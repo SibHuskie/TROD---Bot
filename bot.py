@@ -1445,11 +1445,11 @@ async def punish(ctx, userName: discord.Member = None, time: int = None, *, args
             time2 = time * 60
             if args == None:
                 await client.add_roles(userName, punished_role)
-                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}! for {} minutes!`\n`Reason: ?`".format(userName.display_name, author.display_name, time2))
+                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}! for {} minutes!`\n`Reason: ?`".format(userName.display_name, author.display_name, time))
                 await client.say(embed=msg)
             else:
                 await client.add_roles(userName, punished_role)
-                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {} for {} minutes!`\n`Reason: {}`".format(userName.display_name, author.display_name, time2, args))
+                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {} for {} minutes!`\n`Reason: {}`".format(userName.display_name, author.display_name, time, args))
                 await client.say(embed=msg)
             await asyncio.sleep(float(time2))
             await client.remove_roles(userName, punished_role)
