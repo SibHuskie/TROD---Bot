@@ -1434,17 +1434,22 @@ async def punish(ctx, userName: discord.Member = None, time = None, *, args = No
     if helper_role in author.roles or mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
         if userName == None or time == None:
             msg.add_field(name=":octagonal_sign: ", value="`}punish <user> <time> [reason]`")
+            await client.say(embed=msg)
         elif helper_role in userName.roles or mod_role in userName.roles or admin_role in userName.roles or manager_role in userName.roles or owner_role in userName.roles:
             msg.add_field(name=":octagonal_sign: ", value="`You can't punish other staff!`")
+            await client.say(embed=msg)
+        elif punished_role in userName.roles:
+            msg.add_field(name=":octagonal_sign: ", value="That user is already punished!")
+            await client.say(embed=msg)
         else:
             time2 = time * 60
             if args == None:
                 await client.add_roles(userName, punished_role)
-                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}!`\n`Reason: ?`".format(userName.display_name, author.display_name))
+                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}! for {} minutes!`\n`Reason: ?`".format(userName.display_name, author.display_name, time2))
                 await client.say(embed=msg)
             else:
                 await client.add_roles(userName, punished_role)
-                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}!`\n`Reason: {}`".format(userName.display_name, author.display_name, args))
+                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {} for {} minutes!`\n`Reason: {}`".format(userName.display_name, author.display_name, time2, args))
                 await client.say(embed=msg)
             await asyncio.sleep(float(time2))
             await client.remove_roles(userName, punished_role)
