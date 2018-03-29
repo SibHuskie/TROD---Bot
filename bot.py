@@ -1418,9 +1418,9 @@ async def warn(ctx, userName: discord.Member = None, *, args = None):
     print("{} ### {}".format(author, author.id))
     print("============================================================")
            
-# }punish <user> [reason]
+# }punish <user> [time] [reason]
 @client.command(pass_context=True)
-async def punish(ctx, userName: discord.Member = None, *, args = None):
+async def punish(ctx, userName: discord.Member = None, time = None, *, args = None):
     punished_role = discord.utils.get(ctx.message.server.roles, name='Shadows (Punished)')
     helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
     mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
@@ -1433,18 +1433,33 @@ async def punish(ctx, userName: discord.Member = None, *, args = None):
     msg.set_footer(text=footer_text)
     if helper_role in author.roles or mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
         if userName == None:
-            msg.add_field(name=":octagonal_sign: ", value="`}punish <user> [reason]`")
+            msg.add_field(name=":octagonal_sign: ", value="`}punish <user> [time] [reason]`")
         elif helper_role in userName.roles or mod_role in userName.roles or admin_role in userName.roles or manager_role in userName.roles or owner_role in userName.roles:
             msg.add_field(name=":octagonal_sign: ", value="`You can't punish other staff!`")
-        elif args == None:
-            await client.add_roles(userName, punished_role)
-            msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}!`\n`Reason: ?`".format(userName.display_name, author.display_name))
+        elif time == int or time == float:
+            time2 = time * 60
+            if args == None:
+                await client.add_roles(userName, punished_role)
+                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}!`\n`Reason: ?`".format(userName.display_name, author.display_name))
+            else:
+                await client.add_roles(userName, punished_role)
+                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}!`\n`Reason: {}`".format(userName.display_name, author.display_name, args))
+                await client.say(embed=msg)
+            await async(float(time2))
+            await client.remove_roles(userName, punished_role)
+            await client.say("```diff\n- Removed {}'s punishment! ({} minutes are up.)\n```".format(userName.display_name, time2))
         else:
-            await client.add_roles(userName, punished_role)
-            msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}!`\n`Reason: {}`".format(userName.display_name, author.display_name, args))
+            if args == None:
+                await client.add_roles(userName, punished_role)
+                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}!`\n`Reason: ?`".format(userName.display_name, author.display_name))
+                await client.say(embed=msg)
+            else:
+                await client.add_roles(userName, punished_role)
+                msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {}!`\n`Reason: {}`".format(userName.display_name, author.display_name, args))
+                await client.say(embed=msg)
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by staff!`")
-    await client.say(embed=msg)
+        await client.say(embed=msg)
     print("============================================================")
     print("}punish <user> [reason]")
     print("{} ### {}".format(author, author.id))
