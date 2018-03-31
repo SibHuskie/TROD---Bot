@@ -1573,7 +1573,8 @@ async def partner(ctx, userName: discord.Member = None):
     print("============================================================")
 
 # }tempban <user> <time> [reason]
-@client.command(ctx, userName: discord.Member = None, time: int = None, *, args = None):
+@client.command(pass_context=True)
+async def tempban(ctx, userName: discord.Member = None, time: int = None, *, args = None):
     helper_role = discord.utils.get(ctx.message.server.roles, name='Fallen Angels (Helpers)')
     mod_role = discord.utils.get(ctx.message.server.roles, name='Shades (Moderators)')
     admin_role = discord.utils.get(ctx.message.server.roles, name='Demons (Administrators)')
