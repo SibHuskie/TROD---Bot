@@ -1382,7 +1382,7 @@ async def punish(ctx, userName: discord.Member = None, time: int = None, *, args
             msg.add_field(name=":octagonal_sign: ", value="`You can't punish other staff!`")
             await client.say(embed=msg)
         elif punished_role in userName.roles:
-            msg.add_field(name=":octagonal_sign: ", value="That user is already punished!")
+            msg.add_field(name=":octagonal_sign: ", value="`That user is already punished!`")
             await client.say(embed=msg)
         else:
             time2 = time * 60
@@ -1482,7 +1482,7 @@ async def userinfo(ctx, userName: discord.Member = None):
     if helper_role in author.roles or mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
         if userName == None:
             msg.title = ""
-            msg.add_field(name=":octagonal_sign: ", value="}userinfo <user>")
+            msg.add_field(name=":octagonal_sign: ", value="`}userinfo <user>`")
         else:
             imageurl = userName.avatar_url
             msg.title = ":page_with_curl: USER INFORMATION"
