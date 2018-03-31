@@ -1596,7 +1596,7 @@ async def tempban(ctx, userName: discord.Member = None, time: int = None, *, arg
                 time2 = time * 60
                 user_id = userName.id
                 if args == None:
-                    msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {} for {} minutes!`\n`Reason: ?`".format(author.display_name, userName.display_name, time))
+                    msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {} for {} minute(s)!`\n`Reason: ?`".format(author.display_name, userName.display_name, time))
                     await client.say(embed=msg)
                     await client.ban(userName)
                     await asyncio.sleep(float(time2))
@@ -1605,7 +1605,7 @@ async def tempban(ctx, userName: discord.Member = None, time: int = None, *, arg
                     await client.unban(ctx.message.server, user)
                     await client.say("```diff\n- The user with the following ID has been unbanned: {} ({} minute(s) are up!)\n```".format(user_id, time))
                 else:
-                    msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {} for {} minutes!`\n`Reason: {}`".format(author.display_name, userName.display_name, time, args))
+                    msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {} for {} minute(s)!`\n`Reason: {}`".format(author.display_name, userName.display_name, time, args))
                     await client.say(embed=msg)
                     await client.ban(userName)
                     await asyncio.sleep(float(time2))
