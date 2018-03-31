@@ -1392,14 +1392,14 @@ async def punish(ctx, userName: discord.Member = None, time: int = None, *, args
                 await client.say(embed=msg)
                 await asyncio.sleep(float(time2))
                 await client.remove_roles(userName, punished_role)
-                await client.say("```diff\n- Removed {}'s punishment! ({} minute(s) are up.)\n```".format(userName.display_name, time2))
+                await client.say("```diff\n- Removed {}'s punishment! ({} minute(s) are up.)\n```".format(userName.display_name, time))
             else:
                 await client.add_roles(userName, punished_role)
                 msg.add_field(name=":no_entry_sign: ", value="`{} has been punished by {} for {} minute(s)!`\n`Reason: {}`".format(userName.display_name, author.display_name, time, args))
                 await client.say(embed=msg)
                 await asyncio.sleep(float(time2))
                 await client.remove_roles(userName, punished_role)
-                await client.say("```diff\n- Removed {}'s punishment! ({} minute(s) are up.)\n```".format(userName.display_name, time2))
+                await client.say("```diff\n- Removed {}'s punishment! ({} minute(s) are up.)\n```".format(userName.display_name, time))
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by staff!`")
         await client.say(embed=msg)
