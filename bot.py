@@ -1584,9 +1584,6 @@ async def tempban(ctx, userName: discord.Member = None, time: int = None, *, arg
     msg = discord.Embed(colour=0x210150, description= "")
     msg.title = ""
     msg.set_footer(text=footer_text)
-    msg2 = discord.Embed(colour=0x210150, description= "")
-    msg2.title = ""
-    msg2.set_footer(text=footer_text)
     if mod_role in author.roles or admin_role in author.roles or manager_role in author.roles or owner_role in author.roles:
         if userName == None or time == None:
             msg.add_field(name=":octagonal_sign: ", value="`}tempban <user> <time> [reason]`")
@@ -1599,20 +1596,18 @@ async def tempban(ctx, userName: discord.Member = None, time: int = None, *, arg
                 time2 = time * 60
                 user_id = userName.id
                 if args == None:
-                    msg2.add_field(name=":skull_crossbones: ", value="`You have been banned from The Realm Of Darkness by {}!`\n`Reason: ?`".format(author.display_name))
                     msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {} for {} minutes!`\n`Reason: ?`".format(author.display_name, userName.display_name, time))
-                    await client.send_message(userName, embed=msg2)
                     await client.say(embed=msg)
+                    await client.ban(userName)
                     await asyncio.sleep(float(time2))
                     banned_users = await client.get_bans(ctx.message.server)
                     user = discord.utils.get(banned_users,id=user_id)
                     await client.unban(ctx.message.server, user)
                     await client.say("```diff\n- The user with the following ID has been unbanned: {} ({} minute(s) are up!)\n```".format(user_id, time))
                 else:
-                    msg2.add_field(name=":skull_crossbones: ", value="`You have been banned from The Realm Of Darkness by {}!`\n`Reason: ?`".format(author.display_name))
                     msg.add_field(name=":hammer: Ban Hammer", value="`{} banned {} for {} minutes!`\n`Reason: {}`".format(author.display_name, userName.display_name, time, args))
-                    await client.send_message(userName, embed=msg2)
                     await client.say(embed=msg)
+                    await client.ban(userName)
                     await asyncio.sleep(float(time2))
                     banned_users = await client.get_bans(ctx.message.server)
                     user = discord.utils.get(banned_users,id=user_id)
@@ -1621,7 +1616,6 @@ async def tempban(ctx, userName: discord.Member = None, time: int = None, *, arg
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Moderators, Administrators, Managers and Owners!`")
         await client.say(embed=msg)
-    await client.ban(userName)
     print("============================================================")
     print("}tempban <user> <time> [reason]")
     print("{} ### {}".format(author, author.id))
