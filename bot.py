@@ -1563,7 +1563,7 @@ async def partner(ctx, userName: discord.Member = None):
                 msg.add_field(name=":credit_card: ", value="`{} removed the partnership with {}!`".format(author.display_name, userName.display_name))
             else:
                 await client.add_roles(userName, partner_role)
-                msg.add_field(name=":credit_card: ", value="{} partnered with {}!".format(author.display_name, userName.display_name))
+                msg.add_field(name=":credit_card: ", value="`{} partnered with {}!`".format(author.display_name, userName.display_name))
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Moderators, Administrators, Managers and Owners!`")
     await client.say(embed=msg)
