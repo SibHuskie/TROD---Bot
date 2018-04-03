@@ -367,6 +367,22 @@ spanklinks = ["https://i.imgur.com/dt1TTQu.gif",
               "https://i.imgur.com/UShywVv.gif",
               "https://i.imgur.com/RE3mnrA.gif"]
 
+rickrolls = ["https://www.youtube.com/watch?v=V-_O7nl0Ii0",
+             "https://www.youtube.com/watch?v=ID_L0aGI9bg",
+             "https://www.youtube.com/watch?v=yBLdQ1a4-JI",
+             "https://www.youtube.com/watch?v=6-HUgzYPm9g",
+             "https://www.youtube.com/watch?v=Gc2u6AFImn8",
+             "https://www.youtube.com/watch?v=4n7_Il1dft0",
+             "https://www.youtube.com/watch?v=OL7B2z56ziQ",
+             "https://www.youtube.com/watch?v=li7qFeHI5KM",
+             "https://www.youtube.com/watch?v=wvWX-jWhLBI",
+             "https://youtu.be/ByC8sRdL-Ro",
+             "https://www.youtube.com/watch?v=HoWcnTsc5s8",
+             "hi lol",
+             "https://www.youtube.com/watch?v=E9DlT_DS0wA",
+             "https://youtu.be/rp8hvyjZWHs",
+             "https://www.youtube.com/watch?v=3HfnLwopb58"]
+
 # EVENT - TELLS YOU WHEN THE BOT TURNS ON
 @client.event
 async def on_ready():
@@ -551,25 +567,25 @@ async def ship(ctx, userName1: discord.Member = None, userName2: discord.Member 
         msg.add_field(name=":octagonal_sign: ",value="`}ship <user1> <user2>`")
     else:
         if percent >= 1 and percent <= 10:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Shit\n```\n:sob: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Shit\n```\n:sob: ".format(userName1.display_name, userName2.display_name, percent))
         elif percent >= 11 and percent <= 20:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Awful\n```\n:cry: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Awful\n```\n:cry: ".format(userName1.display_name, userName2.display_name, percent))
         elif percent >= 21 and percent <= 30:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Really Bad\n```\n:frowning2: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Really Bad\n```\n:frowning2: ".format(userName1.display_name, userName2.display_name, percent))
         elif percent >= 31 and percent <= 40:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Bad\n```\n:slight_frown: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Bad\n```\n:slight_frown: ".format(userName1.display_name, userName2.display_name, percent))
         elif percent >= 41 and percent <= 50:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Okay\n```\n:neutral_face: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Okay\n```\n:neutral_face: ".format(userName1.display_name, userName2.display_name, percent))
         elif percent >= 51 and percent <= 60:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Good\n```\n:slight_smile: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Good\n```\n:slight_smile: ".format(userName1.display_name, userName2.display_name, percent))
         elif percent >= 61 and percent <= 70:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Very Good\n```\n:smiley: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Very Good\n```\n:smiley: ".format(userName1.display_name, userName2.display_name, percent))
         elif percent >= 71 and percent <= 80:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Fantastic\n```\n:blush: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Fantastic\n```\n:blush: ".format(userName1.display_name, userName2.display_name, percent))
         elif percent >= 81 and percent <= 90:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Amazing\n```\n:heart_eyes: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Amazing\n```\n:heart_eyes: ".format(userName1.display_name, userName2.display_name, percent))
         else:
-            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{} Perfect\n```\n:revolving_hearts: ".format(userName1.display_name, userName2.display_name, percent))
+            msg.add_field(name=":heartpulse: S H I P  M A C H I N E :heartpulse: ", value=":small_red_triangle_down: **{}**\n:small_red_triangle: **{}**\n```fix\n{}% - Perfect\n```\n:revolving_hearts: ".format(userName1.display_name, userName2.display_name, percent))
     await client.say(embed=msg)
     print("============================================================")
     print("}ship <user1> <user2>")
@@ -1104,6 +1120,30 @@ async def chocolate(ctx, userName: discord.Member = None, number: int = None):
     await client.say(embed=msg)
     print("============================================================")
     print("}chocolate <user> <number>")
+    print("{} ### {}".format(author, author.id))
+    print("============================================================")
+
+# }annoy <user> [text]
+@client.command(pass_context=True)
+async def annoy(ctx, userName: discord.Member = None, args = None):
+    author = ctx.message.author
+    msg = discord.Embed(colour=0x210150, description= "")
+    msg.title = ""
+    msg.set_footer(text=footer_text)
+    if userName == None:
+        msg.add_field(name=":octagonal_sign: ", value="`}annoy <user> [text]`")
+        await client.say(embed=msg)
+    else:
+        if args == None:
+            msg.add_field(name=":drooling_face: ", value="`Sending a beautiful video to {}...`".format(userName.display_name))
+            await client.say(embed=msg)
+            await client.send_message(userName, "{}".format(random.choice(rickrolls)))
+        else:
+            msg.add_field(name=":drooling_face: ", value="`Sliding in {}'s DMs...`".format(userName.display_name))
+            await client.say(embed=msg)
+            await client.send_message(userName, "{}".format(args))
+    print("============================================================")
+    print("}rickroll <user>")
     print("{} ### {}".format(author, author.id))
     print("============================================================")
 
