@@ -1125,7 +1125,7 @@ async def chocolate(ctx, userName: discord.Member = None, number: int = None):
 
 # }annoy <user> [text]
 @client.command(pass_context=True)
-async def annoy(ctx, userName: discord.Member = None, args = None):
+async def annoy(ctx, userName: discord.Member = None, *, args = None):
     author = ctx.message.author
     msg = discord.Embed(colour=0x210150, description= "")
     msg.title = ""
