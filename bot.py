@@ -288,16 +288,6 @@ crylinks = ["https://media1.giphy.com/media/ROF8OQvDmxytW/giphy-downsized.gif",
             "https://media1.tenor.com/images/5912cbe4bc0dec511b5e0996a2ad9b6f/tenor.gif?itemid=8620704",
             "https://s9.favim.com/orig/131225/an-anime-anime-gif-anime-guy-Favim.com-1182388.gif"]
 
-leavelinks = ["https://media.giphy.com/media/lAtxSyUHnoIco/giphy.gif",
-              "https://ci.memecdn.com/5650164.gif",
-              "https://pa1.narvii.com/6080/c46db4cd0979e64c08698175e936bca4626acadd_hq.gif",
-              "https://media1.tenor.com/images/5d4a1f882108251c15d7725060704226/tenor.gif?itemid=4674589",
-              "https://myanimelist.cdn-dena.com/s/common/uploaded_files/1460140429-d60a2b5a534becb71153db8eaaaf4e14.gif",
-              "https://myanimelist.cdn-dena.com/s/common/uploaded_files/1460139914-f1109b66f45c29d770e26da53e875508.gif",
-              "http://i0.kym-cdn.com/photos/images/original/001/081/817/909.gif",
-              "https://myanimelist.cdn-dena.com/s/common/uploaded_files/1460140490-8b365d32a26712058adf10436dce0389.gif",
-              "https://media1.tenor.com/images/151a5c1d0f8434a1d42fbcecfed3e332/tenor.gif?itemid=9362305"]
-
 hacklinks = ["https://i.imgur.com/9eoPhC0.gif",
              "https://i.imgur.com/43cI6Fe.gif",
              "https://vignette.wikia.nocookie.net/vsbattles/images/5/58/Hacking.gif/revision/latest?cb=20150210152035",
@@ -989,11 +979,33 @@ async def cry(ctx):
 @client.command(pass_context=True)
 async def leave(ctx):
     author = ctx.message.author
-    msg = discord.Embed(colour=0x210150, description= "")
-    msg.title = ""
-    msg.set_footer(text=footer_text)
-    msg.set_image(url="{}".format(random.choice(leavelinks)))
-    msg.add_field(name=":handshake: Interactions", value="`{} left the chat! 3:`".format(author.display_name), inline=True)
+    await client.delete_message(ctx.message)
+    leaves = ["`{}` left! Please insert a coin to continue.".format(author),
+              "We lost `{}`! Do not give up yet!".format(author),
+              "`{}` died!".format(userName),
+              "`{}` left the server! Everyone, get back to work.".format(author),
+              "We will miss you, `{}`!".format(author),
+              "Achievement get: Loose `{}`!".format(author),
+              "Good luck, `{}`, you'll need it on your journey!".format(author),
+              "`{}` left the server!".format(author),
+              "Wait, where did `{}` go?".format(author),
+              "Our `{}` has been killed!".format(author),
+              "Your `{}` was destroyed!".format(author),
+              "And so `{}` went on their journey to become the wizard king!".format(author),
+              "No, `{}`! We lost them...".format(author),
+              "`{}` left the game!".format(author),
+              "`{}` left your party!".format(author),
+              "`{}` left the server! Shut up and listen.".format(author),
+              "`{}`, you will be remembered.".format(author),
+              "`{}`, wait! What about our deal?!".format(author),
+              "Damn! Not `{}` too!".format(author),
+              "`{}` left the server! Did I do something wrong?".format(author),
+              "Swoooosh, `{}` just flew away.".format(author),
+              "Hey, `{}`! Where do you- too late...".format(author),
+              "You'll be back, `{}`! I'll be waiting!".format(author),
+              "Error 404: `{}` not found!".format(author),
+              "No one really liked you anyway, `{}`... except me...".format(author)]
+    await client.send_message(client.get_channel("414092782408433684"), "{}".format(random.choice(leaves)))
     await client.say(embed=msg)
     print("============================================================")
     print("}leave")
@@ -1162,6 +1174,7 @@ async def say(ctx, *, args=None):
             msg.add_field(name=":octagonal_sign: ", value="`}say <text>`")
             await client.say(embed=msg)
         else:
+            await client.delete_message(ctx.message)
             await client.say("`{}`".format(args))
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by VIPs and Legends!`")
@@ -1915,6 +1928,7 @@ async def rawsay(ctx, *, args = None):
             msg.add_field(name=":octagonal_sign: ", value="`}rawsay <text>`")
             await client.say(embed=msg)
         else:
+            await client.delete_message(ctx.message)
             await client.say("{}".format(args))
     else:
         msg.add_field(name=":octagonal_sign: ", value="`This command can only be used by Managers and Owners!`")
