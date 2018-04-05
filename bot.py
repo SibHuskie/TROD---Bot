@@ -1568,7 +1568,7 @@ async def nick(ctx, userName: discord.Member = None, *, args = None):
         elif args == None:
             nickname = args
             await client.change_nickname(userName, nickname)
-            msg.add_field(name=":label: ", value="`{} removed {}'s nickname`".format(author.display_name, userName.display_name))
+            msg.add_field(name=":label: ", value="`{} removed {}'s nickname!`".format(author.display_name, userName.display_name))
         else:
             nickname = args
             msg.add_field(name=":label: ", value="`{} changed {}'s nickname to {}!`".format(author.display_name, userName.display_name, args))
