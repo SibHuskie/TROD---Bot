@@ -855,7 +855,7 @@ async def bite(ctx, userName: discord.Member = None):
         msg.add_field(name=":octagonal_sign: ", value="`}bite <user>`")
     else:
         msg.set_image(url="{}".format(random.choice(bitelinks)))
-        msg.add_field(name=":handshake: Interactions", value="`{}, you got bitten by{}! :3`".format(userName.display_name, author.display_name), inline=True)
+        msg.add_field(name=":handshake: Interactions", value="`{}, you got bitten by {}! :3`".format(userName.display_name, author.display_name), inline=True)
     await client.say(embed=msg)
     print("============================================================")
     print("}bite <user>")
