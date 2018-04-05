@@ -979,10 +979,9 @@ async def cry(ctx):
 @client.command(pass_context=True)
 async def leave(ctx):
     author = ctx.message.author
-    await client.delete_message(ctx.message)
     leaves = ["`{}` left! Please insert a coin to continue.".format(author),
               "We lost `{}`! Do not give up yet!".format(author),
-              "`{}` died!".format(userName),
+              "`{}` died!".format(author),
               "`{}` left the server! Everyone, get back to work.".format(author),
               "We will miss you, `{}`!".format(author),
               "Achievement get: Loose `{}`!".format(author),
@@ -1006,6 +1005,7 @@ async def leave(ctx):
               "Error 404: `{}` not found!".format(author),
               "No one really liked you anyway, `{}`... except me...".format(author)]
     await client.say("{}".format(random.choice(leaves)))
+    await client.delete_message(ctx.message)
     print("============================================================")
     print("}leave")
     print("{} ### {}".format(author, author.id))
