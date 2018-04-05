@@ -1005,8 +1005,7 @@ async def leave(ctx):
               "You'll be back, `{}`! I'll be waiting!".format(author),
               "Error 404: `{}` not found!".format(author),
               "No one really liked you anyway, `{}`... except me...".format(author)]
-    await client.send_message(client.get_channel("414092782408433684"), "{}".format(random.choice(leaves)))
-    await client.say(embed=msg)
+    await client.say("{}".format(random.choice(leaves)))
     print("============================================================")
     print("}leave")
     print("{} ### {}".format(author, author.id))
