@@ -1096,7 +1096,7 @@ async def lick(ctx, userName: discord.Member = None):
         msg.add_field(name=":octagonal_sign: ", value="`}lick <user>`")
     else:
         msg.set_image(url="{}".format(random.choice(licklinks)))
-        msg.add_field(name=":handshake: Interactions", value="`{} licked {}!`".format(author.display_name, userName.display_name), inline=True)
+        msg.add_field(name=":handshake: Interactions", value="`{} licked {}! :3`".format(author.display_name, userName.display_name), inline=True)
     await client.say(embed=msg)
     print("============================================================")
     print("}lick <user>")
