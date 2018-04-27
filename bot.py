@@ -1899,9 +1899,13 @@ async def mass(ctx, arg = None, *, args = None):
                     await client.say("```diff\n- Sliding in everyone's DMs...\n```")
                     for member in ctx.message.server.members:
                         if member_role in member.roles:
-                            await client.send_message(member, args)
+                            try:
+                                await client.send_message(member, args)
+                            else:
+                                print("")
                         else:
                             print(".")
+                    msg.add_field(name=":cloud_tornado: ", value="`I have finished sending DMs to everyone!`")
                     
             else:
                 msg.add_field(name=":octagonal_sign: ", value="`}mass <option> [args]`\n \n`Options:`\n`}mass punish - Punishes all non-punished users on the server!`\n`}mass pardon - Removes punishments from all punished members on the server!`\n`}mass dm <message> - DMs everyone on the server with the message you provided!`")
