@@ -1901,7 +1901,7 @@ async def mass(ctx, arg = None, *, args = None):
                         if member_role in member.roles:
                             try:
                                 await client.send_message(member, args)
-                            else:
+                            except:
                                 print("")
                         else:
                             print(".")
